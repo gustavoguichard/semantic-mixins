@@ -1,0 +1,73 @@
+// IMAGE MIXINS
+// Before using this mixin you should put the images in a folder called sprites
+// and then import'em like so: @import "sprites/*.png"
+= sprite-replace($name, $boilerplate: false)
+  +sprites-sprite($name)
+  @if $boilerplate
+    +boilerplate-image-replace
+  @else
+    +hide-text
+  display: block
+  width: sprites-sprite-width($name)
+  height: sprites-sprite-height($name)
+
+= image-replace($img, $boilerplate: false)
+  @if $boilerplate
+    +boilerplate-image-replace
+  @else
+    +hide-text
+  display: block
+  background-repeat: no-repeat
+  height: image-height($img)
+  width: image-width($img)
+  background-image: image-url($img)
+
+// Don't use this technique if you are stylizing an pseudo element (e.g. decorative-content)
+= boilerplate-image-replace
+  background-color: transparent
+  border: 0
+  overflow: hidden
+  +decorative-content(before, false)
+    width: 0
+    height: 100%
+  // IE 6/7 fallback
+  +ie6-hack
+    text-indent: -9999px
+
+= inline-icon($img, $gap:5px, $pos: left, $padding: 0)
+  background-image: image-url($img)
+  background-repeat: no-repeat
+  @if $pos == right
+    background-position: right top
+    text-align: right
+  @else
+    background-position: left top
+    text-align: left
+  line-height: image-height($img)
+  padding: $padding
+  padding-#{$pos}: image-width($img) + $gap
+
+// COLOR MIXINS
+// Use this mixin instead of default compass +background-image mixin.
+// Use the first argument is the same as you use in the compass mixin
+// The second and third arguments are colors (probably the colors that you use at the end and start of tha gradient),
+// then compass is gonna mix the colors and support the old f***ing browsers.
+// If you use just one color it'll be the solid color
+= legacy-background-image($options, $color1, $color2: false)
+  @if $color2
+    background-color: mix($color1, $color2)
+  @else
+    background-color: $color1
+  +background-image($options)
+
+= vertical-gradient($color1, $color2, $legacy-mix-color: true)
+  @if $legacy-mix-color
+    +legacy-background-image(linear-gradient(top bottom, $color1, $color2), $color1, $color2)
+  @else
+    +legacy-background-image(linear-gradient(top bottom, $color1, $color2), $color1)
+
+= horizontal-gradient($color1, $color2, $legacy-mix-color: true)
+  @if $legacy-mix-color
+    +legacy-background-image(linear-gradient(left right, $color1, $color2), $color1, $color2)
+  @else
+    +legacy-background-image(linear-gradient(left right, $color1, $color2), $color1)

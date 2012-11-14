@@ -1,0 +1,28 @@
+// IE Hacks MIXINS
+= ie6
+  +context(".ie6")
+    @content
+
+= ie6-hack
+  +context("* html")
+    @content
+
+= ie7
+  +context(".ie7")
+    @content
+
+= ie7-hack
+  +context("*+html")
+    @content
+
+= ie8
+  +context(".ie8")
+    @content
+
+= legacy-inline-block
+  display: inline-block
+  *display: inline
+  +has-layout
+
+= has-layout
+  zoom: 1

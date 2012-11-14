@@ -1,0 +1,36 @@
+// ANIMATION
+= keyframes($animation-name)
+  @-webkit-keyframes #{$animation-name}
+    @content
+  @-moz-keyframes #{$animation-name}
+    @content
+  @-o-keyframes #{$animation-name}
+    @content
+  @keyframes #{$animation-name}
+    @content
+
+// Use it to set the color, background and text-shadow of selected areas of page
+= selection($no-shadow: true)
+  ::selection
+    @if $no-shadow
+      text-shadow: none
+    @content
+  ::-moz-selection
+    @if $no-shadow
+      text-shadow: none
+    @content
+
+// Set a color for the inputs placeholders. Compass doesn't have it =P
+= placeholder-color($color)
+  &::-webkit-input-placeholder
+    color: $color
+  &:-moz-placeholder
+    color: $color
+  &:-ms-input-placeholder
+    color: $color
+  &:input-placeholder
+    color: $color
+
+= rgba($property, $color, $alpha: 1)
+  #{$property}: $color
+  #{$property}: rgba($color, $alpha)
