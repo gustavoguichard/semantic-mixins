@@ -1,2 +1,6 @@
 require 'compass'
-Compass::Frameworks.register("semantic-mixins", :path => "#{File.dirname(__FILE__)}/..")
+
+module SemanticMixins
+  class Engine < ::Rails::Engine
+  end
+end
