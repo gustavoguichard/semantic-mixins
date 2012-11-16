@@ -1,3 +1,25 @@
+// FILTERS
+= blur($value: 4px)
+  +filter(blur($value))
+
+= brightness($value: 0.35)
+  +filter(brightness($value))
+
+= contrast($value: 140%)
+  +filter(contrast($value))
+
+= grayscale($value: 100%)
+  +filter(grayscale($value))
+
+= saturate($value: 4)
+  +filter(saturate($value))
+
+= invert($value: 100%)
+  +filter(invert($value))
+
+= hue-rotate($value: 180deg)
+  +filter(hue-rotate($value))
+
 // ANIMATION
 = keyframes($animation-name)
   @-webkit-keyframes #{$animation-name}

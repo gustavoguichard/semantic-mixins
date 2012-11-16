@@ -13,14 +13,6 @@ html
   body
     font-size: 1em
     line-height: 1.4
-
-  hr
-    display: block
-    height: 1px
-    border: 0
-    border-top: 1px solid #ccc
-    margin: 1em 0
-    padding: 0
   
   // Remove the gap between images and the bottom of their containers: h5bp.com/i/440
   img
@@ -37,6 +29,8 @@ html
     resize: vertical
 
 // USEFULL MIXINS
+@function relative-size($size,$context)
+  @return #{$size/$context}em
 
 // This mixin is simple yet awesome to use, it'll give semantics to your sass code.
 // Use it like so:
@@ -61,9 +55,38 @@ html
       position: absolute
     @content
 
-@function relative-size($size,$context)
-  @return #{$size/$context}em
-
+= triangle($position: right, $size: 5px, $color: black)
+  width: 0
+  height: 0
+  line-height: 0
+  @if $position == top
+    border-bottom: $size solid $color
+    border-right: ($size*.75) solid transparent
+    border-left: ($size*.75) solid transparent
+  @if $position == bottom
+    border-top: $size solid $color
+    border-right: ($size*.75) solid transparent
+    border-left: ($size*.75) solid transparent
+  @if $position == left
+    border-right: $size solid $color
+    border-top: ($size*.75) solid transparent
+    border-bottom: ($size*.75) solid transparent
+  @if $position == right
+    border-left: $size solid $color
+    border-top: ($size*.75) solid transparent
+    border-bottom: ($size*.75) solid transparent
+  @if $position == top-left
+    border-top: $size solid $color
+    border-right: $size solid transparent
+  @if $position == top-right
+    border-top: $size solid $color
+    border-left: $size solid transparent
+  @if $position == bottom-right
+    border-bottom: $size solid $color
+    border-left: $size solid transparent
+  @if $position == bottom-left
+    border-bottom: $size solid $color
+    border-right: $size solid transparent
 
 // POSITIONING MIXINS
 = absolute-centering($width: 0, $direction: left, $offset: 0)
@@ -73,15 +96,3 @@ html
 = move($distance, $direction: bottom)
   position: relative
   #{$direction}: - $distance
-
-
-// TEXT MIXIS
-= justify($characters-after: 1, $characters-before: 2)
-  hyphens: auto
-  text-align: justify
-  overflow-wrap: hyphenate
-  -webkit-hyphens: auto
-  -webkit-hyphenate-character: "\2010"
-  -webkit-hyphenate-limit-after: $characters-after
-  -webkit-hyphenate-limit-before: $characters-before
-  -moz-hyphens: auto
