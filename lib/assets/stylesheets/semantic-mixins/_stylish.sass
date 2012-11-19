@@ -22,8 +22,8 @@
   li
     position: relative
     padding-left: $padding-left
+    content: counter(li)
     &:before
-      content: counter(li)
       counter-increment: li
       position: absolute
       left: $left
