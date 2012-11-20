@@ -23,7 +23,7 @@ end
 
 Then run:
 
-  bundle install
+    bundle install
 
 And in your stylesheet:
 
@@ -40,6 +40,6 @@ Or you can add the mixins on demand - but be careful, some mixins may depend on 
 
 This gem is in its initial phase, so keep tracking and updating yours at least till 2013 =)
 
-  bundle update semantic-mixins
+    bundle update semantic-mixins
 
 **Cheers!**
