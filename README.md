@@ -23,27 +23,23 @@ end
 
 Then run:
 
-```ruby
-bundle install
-```
+  bundle install
 
 And in your stylesheet:
 
-```css
+```sass
 @import semantic-mixins
 ```
 
 Or you can add the mixins on demand - but be careful, some mixins may depend on other files:
 
-```css
+```sass
 @import semantic-mixins/main // This one is always needed
 @import semantic-mixins/css3-support
 ```
 
 This gem is in its initial phase, so keep tracking and updating yours at least till 2013 =)
 
-```ruby
-bundle update semantic-mixins
-```
+  bundle update semantic-mixins
 
 **Cheers!**
