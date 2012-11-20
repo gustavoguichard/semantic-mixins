@@ -25,7 +25,8 @@ Then run:
 
     bundle install
 
-And in your stylesheet:
+You might need to restart your server after the `bundle` command
+Then in your stylesheet:
 
 ```sass
 @import semantic-mixins
