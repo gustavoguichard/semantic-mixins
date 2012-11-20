@@ -62,12 +62,12 @@
 
 = vertical-gradient($color1, $color2, $legacy-mix-color: true)
   @if $legacy-mix-color
-    +legacy-background-image(linear-gradient(top bottom, $color1, $color2), $color1, $color2)
+    +legacy-background-image(linear-gradient(color-stops($color1, $color2)), $color1, $color2)
   @else
-    +legacy-background-image(linear-gradient(top bottom, $color1, $color2), $color1)
+    +legacy-background-image(linear-gradient(color-stops($color1, $color2)), $color1)
 
 = horizontal-gradient($color1, $color2, $legacy-mix-color: true)
   @if $legacy-mix-color
-    +legacy-background-image(linear-gradient(left right, $color1, $color2), $color1, $color2)
+    +legacy-background-image(linear-gradient(color-stops($color1, $color2), left), $color1, $color2)
   @else
-    +legacy-background-image(linear-gradient(left right, $color1, $color2), $color1)
+    +legacy-background-image(linear-gradient(color-stops($color1, $color2), left), $color1)
