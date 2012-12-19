@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{semantic-mixins}
-  s.version = "0.1.2.3"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.3.5")
   s.authors = ["Gustavo Guichard", "Josemar David Luedke", "Rafael Barboza"]
@@ -13,5 +13,7 @@ Gem::Specification.new do |s|
   s.test_files = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
   s.add_dependency('rails', '~> 3.1')
+  s.add_dependency('sass', '>= 3.2.3')
+  s.add_dependency('sass-rails', '>= 3.2.4')
   s.add_dependency('compass-rails')
 end
