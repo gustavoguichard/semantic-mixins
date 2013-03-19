@@ -96,3 +96,12 @@ html
 = move($distance, $direction: bottom)
   position: relative
   #{$direction}: - $distance
+
+// FONT MIXINS
+=face($weight: normal, $style: normal)
+  @font-face
+    font-family: $fontName
+    src: url('#{$fontFileName}.eot')
+    src: url('#{$fontFileName}.eot?#iefix') format('embedded-opentype'), url('#{$fontFileName}.woff') format('woff'), url('#{$fontFileName}.ttf') format('truetype'), url('#{$fontFileName}.svg##{$fontName}') format('svg')
+    font-weight: $weight
+    font-style: $style
