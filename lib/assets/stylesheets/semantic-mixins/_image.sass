@@ -42,36 +42,24 @@
   background-image: image-url($img)
   background-repeat: no-repeat
   @if $pos == right
-    background-position: right top
+    background-position: right center
     text-align: right
   @else
-    background-position: left top
+    background-position: left center
     text-align: left
   line-height: image-height($img)
   padding: $padding
   padding-#{$pos}: image-width($img) + $gap
 
 // COLOR MIXINS
-// Use this mixin instead of default compass +background-image mixin.
-// Use the first argument is the same as you use in the compass mixin
-// The second and third arguments are colors (probably the colors that you use at the end and start of tha gradient),
-// then compass is gonna mix the colors and support the old f***ing browsers.
-// If you use just one color it'll be the solid color
-= legacy-background-image($options, $color1, $color2: false)
-  @if $color2
+= vertical-gradient($color1, $color2, $legacy: true)
+  @if $legacy
     background-color: mix($color1, $color2)
-  @else
-    background-color: $color1
-  +background-image($options)
+    +filter-gradient($color1, $color2, vertical)
+  +background-image(linear-gradient(top, $color1, $color2))
 
-= vertical-gradient($color1, $color2, $legacy-mix-color: true)
-  @if $legacy-mix-color
-    +legacy-background-image(linear-gradient(color-stops($color1, $color2)), $color1, $color2)
-  @else
-    +legacy-background-image(linear-gradient(color-stops($color1, $color2)), $color1)
-
-= horizontal-gradient($color1, $color2, $legacy-mix-color: true)
-  @if $legacy-mix-color
-    +legacy-background-image(linear-gradient(color-stops($color1, $color2), left), $color1, $color2)
-  @else
-    +legacy-background-image(linear-gradient(color-stops($color1, $color2), left), $color1)
+= horizontal-gradient($color1, $color2, $legacy: true)
+  @if $legacy
+    background-color: mix($color1, $color2)
+    +filter-gradient($color1, $color2, horizontal)
+  +background-image(linear-gradient(left, $color1, $color2))
