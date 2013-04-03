@@ -20,11 +20,24 @@
     +boilerplate-image-replace
   @else
     +hide-text
+  +image-block($img)
+
+= image-block($img)
   display: block
   background-repeat: no-repeat
   height: image-height($img)
   width: image-width($img)
   background-image: image-url($img)
+
+= prepend-image($img, $absolute: true)
+  +decorative-content(before, $absolute)
+    +image-block($img)
+    @content
+
+= append-image($img, $absolute: true)
+  +decorative-content(after, $absolute)
+    +image-block($img)
+    @content
 
 // Don't use this technique if you are stylizing an pseudo element (e.g. decorative-content)
 = boilerplate-image-replace
