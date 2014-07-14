@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
   s.add_dependency('rails', '>= 3.1')
   s.add_dependency('sass', '>= 3.2.3')
   s.add_dependency('sass-rails', '>= 3.2.4')
-  s.add_dependency('compass-rails', '~> 1.0.3')
+  s.add_dependency('compass-rails', '>= 1.0.3')
 end
