@@ -1,33 +1,4 @@
 // This code isn't yet fully tested
-
-// CUSTOM HTML RESETS
-html
-  text-rendering: optimizeLegibility
-  -webkit-font-smoothing: antialiased
-
-= css-techniques($font-size: 16)
-  
-  html
-    font-size: relative-size($font-size,16)
-
-  body
-    font-size: 1em
-    line-height: 1.4
-  
-  // Remove the gap between images and the bottom of their containers: h5bp.com/i/440
-  img
-    vertical-align: middle
-
-  // Remove default fieldset styles.
-  fieldset
-    border: 0
-    margin: 0
-    padding: 0
-  
-  // Allow only vertical resizing of textareas.
-  textarea
-    resize: vertical
-
 // USEFULL MIXINS
 @function relative-size($size,$context)
   @return #{$size/$context}em
@@ -105,3 +76,29 @@ html
     src: url('#{$fontFileName}.eot?#iefix') format('embedded-opentype'), url('#{$fontFileName}.svg##{$fontName}') format('svg'), url('#{$fontFileName}.woff') format('woff'), url('#{$fontFileName}.ttf') format('truetype')
     font-weight: $weight
     font-style: $style
+
+= full-height-columns($selector: '.column', $method: "table", $max-size: 999em)
+  @if $method == "table"
+    display: table
+    & #{$selector}
+      display: table-cell  
+  @else
+    overflow: hidden
+    & #{$selector}
+      margin-bottom: - $max-size
+      padding-bottom: $max-size
+      float: left
+
+= stick-to($direction: bottom, $position: absolute, $size: false)
+  position: $position
+  @if $direction == bottom or $direction == top
+    @if $size
+      height: $size
+    left: 0
+    right: 0
+  @if $direction == left or $direction == right
+    @if $size
+      width: $size
+    top: 0
+    bottom: 0
+  #{$direction}: 0
