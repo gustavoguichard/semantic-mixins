@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{semantic-mixins}
-  s.version = "0.2.2"
+  s.version = "0.2.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.3.5")
   s.authors = ["Gustavo Guichard", "Josemar David Luedke", "Rafael Barboza"]
