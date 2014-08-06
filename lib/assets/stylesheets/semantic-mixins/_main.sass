@@ -64,6 +64,11 @@
   #{$direction}: 50%
   margin-#{$direction}: - ($width / 2) - $offset
 
+= vertical-align-child($selector)
+  display: table
+  & #{$selector}
+    vertical-align: middle
+
 = move($distance, $direction: bottom)
   position: relative
   #{$direction}: - $distance
